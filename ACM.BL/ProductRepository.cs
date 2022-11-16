@@ -31,19 +31,23 @@
 
             if (product.HasChanges)
             {
-                if (product.IsNew)
+                if (product.IsValid)
                 {
-                    // call an insert stored procedure
+                    if (product.IsNew)
+                    {
+                        // call an insert stored procedure
+                    }
+                    else
+                    {
+                        // call an update stored procedure
+                    }
                 }
                 else
                 {
-                    // call an update stored procedure
+                    success = false;
                 }
             }
-            else
-            {
-                success = false;
-            }
+            
             return success;
         }
     }

@@ -56,5 +56,28 @@ namespace ACM.BL.TEST
             // assert
             Assert.That(true, Is.EqualTo(actual));
         }
+
+        [Test]
+        public void SaveTestMissingPrice()
+        {
+            // arrange
+            // arrange
+            var productRepository = new ProductRepository();
+
+            var updatedProduct = new Product(2)
+            {
+                ProductId = 2,
+                ProductName = "Haribo",
+                ProductDescription = "Sweets, no good for teeth",                
+                CurrentPrice = null,
+                HasChanges = true
+            };
+
+            // act
+            var actual = productRepository.Save(updatedProduct);
+
+            // assert
+            Assert.That(false, Is.EqualTo(actual));
+        }
     }
 }
